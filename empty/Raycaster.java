@@ -25,13 +25,7 @@ public class Raycaster implements Runnable {
 	private boolean running;
 	private int fps;
 
-	private Map map;	
-
-	private double playerSpeed = 5f;
-	private double playerX = 9;
-	private double playerY = 9;
-	private double playerFov = Math.toRadians(66.6);
-	private double playerDirection = Math.toRadians(90);
+	private Map map;
 
 	private boolean leftPressed, rightPressed, upPressed, downPressed;
 
@@ -46,7 +40,6 @@ public class Raycaster implements Runnable {
 
 		start();
 	}
-
 	private void initUI() {
 		// Use graphics hardware acceleration		
 		System.setProperty("sun.java2d.opengl", "True");
@@ -159,40 +152,22 @@ public class Raycaster implements Runnable {
 		}
 	}
 
+	/* reads user input and updates the players position */
 	private void update(double dt) {
-		if (leftPressed)
-			playerDirection = (playerDirection + (dt * 1.3) + TAU) % TAU;
-		else if (rightPressed)
-			playerDirection = (playerDirection - (dt * 1.3) + TAU) % TAU;
-		
-		if (upPressed) {
-			double nextX = playerX + (Math.cos(playerDirection) * playerSpeed * dt);
-			double nextY = playerY - (Math.sin(playerDirection) * playerSpeed * dt);
-
-			if (map.get(nextX, nextY) == 0) {
-				playerX = nextX;
-				playerY = nextY;
-			}
-		}
-		else if (downPressed) {
-			double nextX = playerX - (Math.cos(playerDirection) * playerSpeed * dt);
-			double nextY = playerY + (Math.sin(playerDirection) * playerSpeed * dt);			
-
-			if (map.get(nextX, nextY) == 0) {
-				playerX = nextX;
-				playerY = nextY;
-			}
-		}
+		/* fill in this method */
 	}
 
+	/* raycasts and draws appropriate walls */
 	private void drawWalls() {
 		/* fill in this method */
 	}
 
+	/* draws the floor and ceiling */
 	private void drawFloorAndCeiling() {
 		/* fill in this method */
 	}
 
+	/* draws the minimap in the top left corner */
 	private void drawMinimap() {
 		/* fill in this method */
 	}
